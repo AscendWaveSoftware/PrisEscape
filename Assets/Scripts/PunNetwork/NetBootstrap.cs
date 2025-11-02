@@ -13,6 +13,11 @@ public class NetBootstrap : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.GameVersion = gameVersion;
         PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.SerializationRate = 15;
+
+        //TODO: Debug wieder rausnehmen
+        PhotonNetwork.NickName = "P" + Random.Range(1000, 9999);
+
         Debug.Log("Connecting to Photon Cloud...");
     }
 

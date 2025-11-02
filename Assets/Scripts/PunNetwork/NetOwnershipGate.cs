@@ -25,5 +25,13 @@ public class NetOwnershipGate : MonoBehaviourPun
             if (listener)
                 listener.enabled = isMine;
         }
+
+        var rb = GetComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+
+        rb.isKinematic = !photonView.IsMine;
+
+        int players = LayerMask.NameToLayer("Players");
+        Physics.IgnoreLayerCollision(players, players, true);
     }
 }
